@@ -1,0 +1,43 @@
+class Solution
+{
+    public static int romanToInt(String a)
+    {
+       if(a == null || a.length() == 0) {
+            return 0;
+        }
+        Map<Character,Integer> roman=new HashMap<>();
+        roman.put( 'I',1);
+        roman.put( 'V',5);
+        roman.put( 'X',10);
+        roman.put( 'L',50);
+        roman.put( 'C',100);
+        roman.put( 'D',500);
+        roman.put( 'M',1000);
+
+        int result=0;
+
+            for(int i = 0; i<a.length()-1;i++) {
+
+                    if (roman.get(a.charAt(i) )>= roman.get(a.charAt(i+1)))
+                    {
+                         result =result+ roman.get(a.charAt(i));
+                    }
+                    else
+                    {
+                         result =result-roman.get(a.charAt(i));
+                    }
+
+
+            }
+            result = result + roman.get(a.charAt(a.length()-1));
+
+        return result;
+    }
+    public static void main(String args[])
+    {
+        //Solution1 s1=new Solution1();
+        String a="IV";
+        System.out.println(romanToInt(a));
+
+    }
+}
